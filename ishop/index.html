@@ -22,9 +22,9 @@
   let shopName="Lamoda"
   let  data=["Название продукта","Цена","Фото","Остаток"]
   let productList=[ 
-         {productName:"Футболки",price:10,photo:React.DOM.img({src:"shirt.jpg"}),balance:5,key:10},
-         {productName:"Джинсы",price:8,photo:React.DOM.img({src:"jeans.jpg"}),balance:3,key:11}, 
-         {productName:"Куртки",price:5,photo:React.DOM.img({src:"jacket.jpg"}),balance:2,key:12}
+         {productName:"Футболки",price:10,photo:React.DOM.img({src:"shirt.jpg"}),balance:5,code:10},
+         {productName:"Джинсы",price:8,photo:React.DOM.img({src:"jeans.jpg"}),balance:3,code:11}, 
+         {productName:"Куртки",price:5,photo:React.DOM.img({src:"jacket.jpg"}),balance:2,code:12}
         ]
     ReactDOM.render(
     React.createElement(MyComponent,{shop:shopName,dataItems:data ,list:productList}),

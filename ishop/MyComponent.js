@@ -12,7 +12,7 @@ propTypes:{
     productName:React.PropTypes.string.isRequired,
     price:React.PropTypes.number.isRequired,
     balance:React.PropTypes.number.isRequired,
-    key:React.PropTypes.number.isRequired,
+    code:React.PropTypes.number.isRequired,
     photo:React.PropTypes.shape.isRequired,
 
    })
@@ -27,13 +27,12 @@ propTypes:{
 
 render:function(){
   
- 
   var productsArray=[]
   var dataArray=[]
   
   let data=this.props.dataItems
-  data.forEach(element => {
-    let td=React.DOM.td({key:Math.random()},element)
+  data.forEach((element,index) => {
+    let td=React.DOM.td({key:index},element)
     dataArray.push(td)
   });
   
@@ -42,11 +41,11 @@ render:function(){
   var productList=this.props.list
   productList.forEach(element => {
     var nextProduct=        
-    React.DOM.tr({key: Math.random(),className:null},
-      React.DOM.td({key: 14,className:null},element.productName),
-      React.DOM.td({key: 15,className:null}, element.price),
-      React.DOM.td({key: 16,className:null},element.photo),
-      React.DOM.td({key: 17,className:null},element.balance),
+    React.DOM.tr({key: element.code,className:null},
+      React.DOM.td({className:null},element.productName),
+      React.DOM.td({className:null}, element.price),
+      React.DOM.td({className:null},element.photo),
+      React.DOM.td({className:null},element.balance),
     )
     productsArray.push(nextProduct)
   });
