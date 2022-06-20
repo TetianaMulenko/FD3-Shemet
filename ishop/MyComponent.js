@@ -20,9 +20,6 @@ propTypes:{
 
   ),
 
-
-   
-
 },
 
 render:function(){
@@ -48,7 +45,9 @@ render:function(){
       React.DOM.td({className:null},element.balance),
     )
     productsArray.push(nextProduct)
+   
   });
+  console.log(productsArray)
   
   return React.DOM.table( {className:"MyComponent__table",}, 
   React.DOM.caption({className:"MyComponent__table__heading"},shop),
@@ -57,6 +56,7 @@ render:function(){
      
      productsArray),
     );
+    
 },
 
 })
