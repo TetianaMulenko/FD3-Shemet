@@ -9,29 +9,30 @@ propTypes: {
   getInitialState: function(){
     return  { 
    startArray:this.props.words,
-   value:null
+   value:""
     }
  },
 
  checkBoxClick:function(EO){
   if(EO.target.checked){
     this.setState( {startArray:this.state.startArray.concat().sort()} );
-    console.log(this.props.words)
+   console.log(this.state.startArray)
   }
   else{
-    this.setState( {startArray:this.props.words} )
-    console.log(this.props.words)
+    this.setState( {startArray:this.state.startArray} )
+   
   }
  
  },
  inputChange:function(EO){
-this.setState({value:EO.target.value})
- const filterWords=this.props.words.filter(arrayWord=> arrayWord.includes(this.state.value))
- console.log(this.state.value)
- console.log(filterWords)
-this.setState({startArray:filterWords})
+  const filterWords=this.props.words.filter(arrayWord=> arrayWord.includes(EO.target.value))
+  this.setState({startArray:filterWords})
+  console.log(filterWords)
+  console.log(this.state.startArray)
   
+ 
  },
+
  
   render: function() {
    
