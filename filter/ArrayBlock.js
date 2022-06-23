@@ -11,19 +11,7 @@ propTypes: {
    startArray:this.props.words,
    filterString:"",
    sort:false,
-   updateArray:function(){
-    let lines=this.props.words.slice();
-    if ( this.state.filterString ){
-      lines=lines.filter( line => line.indexOf(this.state.filterString)!=-1 )
-      this.setState( {startArray:lines} )
-    }
-   
-      if ( this.state.sort ){
-      lines.sort();
-      this.setState( {startArray:lines} )
-      }
-
-    }
+  
    }
     
  },
@@ -31,30 +19,51 @@ propTypes: {
  checkBoxClick:function(EO){
   if(EO.target.checked){
     console.log(this.props.words)
-    this.setState( {sort:true}, this.state.updateArray );
+    this.setState( {sort:true}, this.updateArray );
+    
   }
   else{
-    this.setState( {sort:false}, this.state.updateArray );
-  
+    this.setState( {sort:false}, this.updateArray );
   }
   
  },
  inputChange:function(EO){
   
-  if(EO.target.value)
-  this.setState( {filterString:EO.target.value}, this.state.updateArray );
-  if(!EO.target.value)
-  this.setState({filterString:""})
+  this.setState( {filterString:EO.target.value}, this.updateArray );
+  this.updateArray()
+
+  
+ 
  },
  
  resetClick:function(EO){
-  this.setState( {sort:false}, this.state.updateArray );
-  this.setState({filterString:""},this.state.updateArray)
-  // Если напишу this.state.updateArray(), то выбьет ошибку
-  this.state.updateArray()
-  console.log("Сброс")
+  this.setState( {sort:false}, this.updateArray );
+  this.setState({filterString:""},this.updateArray)
+  this.updateArray()
+  let check= document.querySelector('input[type=checkbox]')
+  check.checked=false;
+  let input=document.querySelector('input[type=text]')
+  input.value=""
+
+ 
   
  },
+ updateArray:function(){
+ console.log(this.state.sort)
+ console.log(this.state.filterString)
+  let lines=this.props.words.slice();
+  if ( this.state.filterString ){
+    lines=lines.filter( line => line.indexOf(this.state.filterString)!=-1 )
+    this.setState( {startArray:lines} )
+  }
+ 
+    if ( this.state.sort ){
+    lines.sort();
+  }
+    this.setState( {startArray:lines} )
+   
+   
+  },
  
 
 
