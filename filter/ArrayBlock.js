@@ -11,6 +11,7 @@ propTypes: {
    startArray:this.props.words,
    filterString:"",
    sort:false,
+   isSorted:false,
   
    }
     
@@ -18,39 +19,22 @@ propTypes: {
 
  checkBoxClick:function(EO){
   if(EO.target.checked){
-    console.log(this.props.words)
-    this.setState( {sort:true}, this.updateArray );
-    
+    this.setState( {sort: true,isSorted:true}, this.updateArray )
   }
   else{
-    this.setState( {sort:false}, this.updateArray );
+    this.setState( {sort:false,isSorted:false}, this.updateArray );
   }
-  
+ 
  },
  inputChange:function(EO){
-  
   this.setState( {filterString:EO.target.value}, this.updateArray );
-  this.updateArray()
-
-  
- 
  },
  
  resetClick:function(EO){
-  this.setState( {sort:false}, this.updateArray );
-  this.setState({filterString:""},this.updateArray)
-  this.updateArray()
-  let check= document.querySelector('input[type=checkbox]')
-  check.checked=false;
-  let input=document.querySelector('input[type=text]')
-  input.value=""
-
- 
-  
+  this.setState( {sort:false,filterString:"",isSorted:false}, this.updateArray );
  },
  updateArray:function(){
- console.log(this.state.sort)
- console.log(this.state.filterString)
+  console.log(this.state.isSorted)
   let lines=this.props.words.slice();
   if ( this.state.filterString ){
     lines=lines.filter( line => line.indexOf(this.state.filterString)!=-1 )
@@ -64,14 +48,7 @@ propTypes: {
    
    
   },
- 
 
-
-
-
-
-
- 
   render: function() {
    
   
@@ -82,8 +59,8 @@ propTypes: {
         React.DOM.option({key:index},element)
         )
     return  React.DOM.div( {className:'ArrayBlock'}, 
-      React.DOM.input({type:'checkbox',defaultChecked:false, onClick:this.checkBoxClick}),
-      React.DOM.input({type:'text',onChange:this.inputChange}),
+      React.DOM.input({type:'checkbox',checked:this.state.isSorted, onClick:this.checkBoxClick}),
+      React.DOM.input({type:'text',onChange:this.inputChange, value:this.state.filterString}),
       React.DOM.input({type:'reset',value:"Сброс",onClick:this.resetClick}),
       React.DOM.form( {className:'form'}, 
       React.DOM.select({size:5},option)
