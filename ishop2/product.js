@@ -24,13 +24,7 @@ let Product=React.createClass({
     render:function(){
       
       var productsArray=[]
-      var dataArray=[]
-      
-      let data=this.props.dataItems
-      data.forEach((element,index) => {
-        let td=React.DOM.td({key:index},element)
-        dataArray.push(td)
-      });
+     
       
        
      
@@ -49,9 +43,10 @@ let Product=React.createClass({
       });
     
       
-      return   React.DOM.tbody( {className:null},
-        React.DOM.tr({className:null},dataArray),
-        productsArray)
+      return      productsArray
+      
+      
+      
        
         
     },
