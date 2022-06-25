@@ -53,7 +53,6 @@ render:function(){
   React.DOM.caption({className:"MyComponent__table__heading"},shop),
      React.DOM.tbody( {className:null},
      React.DOM.tr({className:null},dataArray),
-     
      productsArray),
     );
     
