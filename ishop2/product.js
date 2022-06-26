@@ -18,32 +18,17 @@ let Product=React.createClass({
     
     
       ),
+      
     
     },
     
     render:function(){
       
-      var productsArray=[]
-     
       
-       
-     
-      var productList=this.props.list
-      productList.forEach(element => {
-        var nextProduct=        
-        React.DOM.tr({key: element.code,className:null},
-          React.DOM.td({className:null},element.productName),
-          React.DOM.td({className:null}, element.price),
-          React.DOM.td({className:null},element.url),
-          React.DOM.td({className:null},element.balance),
-            React.DOM.td({className:null},  React.DOM.input({type:"reset",value:"Delete"})),
-        )
-        productsArray.push(nextProduct)
-       
-      });
     
       
-      return      productsArray
+      return     React.DOM.tr({},this.props.product)
+      
       
       
       
