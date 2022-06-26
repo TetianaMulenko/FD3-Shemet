@@ -30,6 +30,7 @@ var productsArray=[]
 
 productList.forEach(element => {
   var nextProduct=  React.DOM.td({className:null},element.productName)
+    React.DOM.td({className:null}, element.price)
     React.DOM.td({className:null},element.url)
     React.DOM.td({className:null},element.balance)
       React.DOM.td({className:null},  React.DOM.input({type:"reset",value:"Delete"}))
