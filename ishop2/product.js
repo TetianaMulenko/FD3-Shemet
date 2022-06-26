@@ -13,27 +13,21 @@ let Product=React.createClass({
         balance:React.PropTypes.number.isRequired,
         code:React.PropTypes.number.isRequired,
         photo:React.PropTypes.shape.isRequired,
-    
        })
-    
-    
+
       ),
-      
-    
     },
     
-    render:function(){
+    render:function(){  
+      console.log(this.props.product.code)
+      return     React.DOM.tr({},
       
-      
-    
-      
-      return     React.DOM.tr({},this.props.product)
-      
-      
-      
-      
-       
+        React.DOM.td({},this.props.product.productName),
+        React.DOM.td({},this.props.product.price),
+        React.DOM.td({},this.props.product.url),
+        React.DOM.td({},this.props.product.balance),
         
+        ) 
     },
     
     })
