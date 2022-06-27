@@ -1,39 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    <div id="container">
-     
-    </div> 
-      
-<script src="https://unpkg.com/react@15/dist/react.js"></script> 
-<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script> 
-    
-<script src="shop.js"></script>
-<link rel="stylesheet" type="text/css" href="shop.css" />
-<script src="product.js"></script>
+  </head>
+  <body>
+    <div id="container"></div>
+
+    <script src="https://unpkg.com/react@15/dist/react.js"></script>
+    <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+
+    <script src="shop.js"></script>
+    <link rel="stylesheet" type="text/css" href="shop.css" />
+    <script src="product.js"></script>
+    <script src="tableHead.js"></script>
 
     <script>
-
- 
-  let shopName="Lamoda"
-  let  data=["Name","Price","URL","Quanity","Control"]
-  let productList=[ 
-         {productName:"Футболки",price:10,url:"url",balance:5,code:10},
-         {productName:"Джинсы",price:8,url:"url",balance:3,code:11}, 
-         {productName:"Куртки",price:5,url:"url",balance:2,code:12}
-        ]
-    ReactDOM.render(
-    React.createElement(Shop,{shop:shopName,dataItems:data ,list:productList}),
-    document.getElementById('container')
-    )
-
-        
+      let shopName = "Lamoda";
+      let data = ["Name", "Price", "URL", "Quanity", "Control"];
+      let productList = [
+        {
+          productName: "Футболки",
+          price: 10,
+          url: "url",
+          balance: 5,
+          code: 10,
+        },
+        { productName: "Джинсы", price: 8, url: "url", balance: 3, code: 11 },
+        { productName: "Куртки", price: 5, url: "url", balance: 2, code: 12 },
+      ];
+      ReactDOM.render(
+        React.createElement(Shop, {
+          shop: shopName,
+          dataItems: data,
+          list: productList,
+          productRenderer: Product,
+          tableHeadRenderer: TableHead,
+        }),
+        document.getElementById("container")
+      );
     </script>
-</body>
+  </body>
 </html>
